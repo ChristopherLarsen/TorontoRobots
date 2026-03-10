@@ -1,11 +1,10 @@
 import { db } from "../lib/db";
 import { articles } from "../db/schema";
-import { eq, desc, and } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import Link from "next/link";
 import ArticleCard from "../components/ArticleCard";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 3600;
 
 export default async function HomePage() {
   const [featuredArticle] = await db
@@ -18,7 +17,7 @@ export default async function HomePage() {
   const latestNews = await db
     .select()
     .from(articles)
-    .where(and(eq(articles.category, "news")))
+    .where(eq(articles.category, "news"))
     .orderBy(desc(articles.publishedAt))
     .limit(6);
 
