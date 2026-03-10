@@ -1,39 +1,48 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Instrument_Serif } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: "400",
 });
 
 export const metadata: Metadata = {
-  title: "Toronto Robotics",
-  description: "Toronto Robotics",
+  title: {
+    default: "Toronto Robotics — Robot News, Reviews & Buying Guide",
+    template: "%s | Toronto Robotics",
+  },
+  description:
+    "Your source for robot news, reviews, and how to buy a robot in Toronto. Updated daily.",
+  keywords: [
+    "robots Toronto",
+    "robot news",
+    "robot reviews",
+    "buy robot Toronto",
+    "robotics Canada",
+    "home robots",
+    "robot buying guide",
+  ],
+  authors: [{ name: "Toronto Robotics" }],
+  creator: "Toronto Robotics",
+  metadataBase: new URL("https://torontorobotics.carapaceos.com"),
+  alternates: { canonical: "https://torontorobotics.carapaceos.com" },
+  openGraph: {
+    title: "Toronto Robotics",
+    description: "Robot news, reviews, and buying guide for Toronto.",
+    url: "https://torontorobotics.carapaceos.com",
+    siteName: "Toronto Robotics",
+    locale: "en_CA",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased`}
-      >
+      <body className={`${inter.variable} antialiased`}>
         {children}
       </body>
     </html>
