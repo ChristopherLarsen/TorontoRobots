@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Triggerfishh</title>
+    <link>https://www.triggerfishh.com</link>
+    <description>Triggerfishh Updates</description>
+    <language>en</language>
+
+    <item>
+      <title>Version 1.0</title>
+      <description>Triggerfishh 1.0</description>
+      <pubDate>Sun, 15 Feb 2026 20:33:38 -0500</pubDate>
+      <sparkle:version>1</sparkle:version>
+      <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+      <enclosure
+        url="https://github.com/ChristopherLarsen/DMG/releases/download/1.0.0/Triggerfishh-1.0.dmg"
+        sparkle:version="1"
+        sparkle:shortVersionString="1.0"
+        type="application/octet-stream"
+        sparkle:edSignature="sI5lTPWjGcFxO+Jz8+JgseLMt6Lfp2NBL+s7Gg5YrisotjVT4vpqd1sdStZhctsS/dngi6k30eoHeo4KoTDBBA=="
+        length="7967588"
+      />
+    </item>
+
+  </channel>
+</rss>
