@@ -157,7 +157,7 @@ export default async function HomePage() {
             <div className="relative overflow-hidden rounded-sm border border-[var(--color-brand-border)] hover:border-[var(--color-brand-accent)] transition-colors">
               <div className="aspect-[21/9] w-full bg-[var(--color-brand-bg)] overflow-hidden">
                 <img
-                  src="https://www.unitree.com/upload/g1/g1-hero.webp"
+                  src="https://www.unitree.com/images/eec8d82f279b440ea170982ffa80b3fa_3840x2160.jpg"
                   alt="Unitree humanoid robot"
                   className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
                 />
