@@ -6,6 +6,7 @@ import PasswordModal from "./PasswordModal";
 export default function NavBar() {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <nav className="border-b border-[var(--color-brand-border)] bg-[var(--color-brand-surface)] sticky top-0 z-50 transition-colors duration-200">
@@ -71,14 +72,61 @@ export default function NavBar() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <button className="text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] focus:outline-none">
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] focus:outline-none"
+            >
+              {isMobileMenuOpen ? (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
             </button>
           </div>
         </div>
       </div>
+
+      {/* Mobile Menu Panel */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden border-t border-[var(--color-brand-border)] bg-[var(--color-brand-surface)]">
+          <div className="px-4 py-3 space-y-1">
+            <Link href="/news" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-semibold tracking-wide text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] uppercase transition-colors">
+              News
+            </Link>
+            <Link href="/reviews" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-semibold tracking-wide text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] uppercase transition-colors">
+              Reviews
+            </Link>
+            <div className="px-3 py-2">
+              <p className="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-muted)] mb-1">Categories</p>
+              <div className="space-y-1 pl-2">
+                <Link href="/categories/home" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 text-sm text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] transition-colors">Home Robots</Link>
+                <Link href="/categories/companion" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 text-sm text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] transition-colors">Companion Robots</Link>
+                <Link href="/categories/educational" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 text-sm text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] transition-colors">Educational Robots</Link>
+                <Link href="/categories/industrial" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 text-sm text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] transition-colors">Industrial / Business</Link>
+                <Link href="/categories/lawn" onClick={() => setIsMobileMenuOpen(false)} className="block py-1 text-sm text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] transition-colors">Lawn / Cleaning</Link>
+              </div>
+            </div>
+            <Link href="/buy" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-semibold tracking-wide text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] uppercase transition-colors">
+              Buying Guides
+            </Link>
+            <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-semibold tracking-wide text-[var(--color-brand-text)] hover:text-[var(--color-brand-accent)] uppercase transition-colors">
+              About
+            </Link>
+            <div className="px-3 py-2">
+              <button
+                onClick={() => { setIsMobileMenuOpen(false); setIsPasswordModalOpen(true); }}
+                className="text-sm font-semibold tracking-wide text-[var(--color-brand-accent)] border border-[var(--color-brand-accent)] hover:bg-[var(--color-brand-accent)] hover:text-white px-4 py-1.5 uppercase transition-colors w-full text-left"
+              >
+                Our Business
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <PasswordModal
         isOpen={isPasswordModalOpen}

@@ -1,9 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { checkBusinessAuth } from "../../components/PasswordModal";
 
 const phases = [
   {
@@ -111,19 +108,6 @@ const concernsLink = {
 };
 
 export default function BusinessHub() {
-  const router = useRouter();
-  const [authed, setAuthed] = useState(false);
-
-  useEffect(() => {
-    if (!checkBusinessAuth()) {
-      router.push("/");
-      return;
-    }
-    setAuthed(true);
-  }, [router]);
-
-  if (!authed) return null;
-
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
       {/* Header */}
