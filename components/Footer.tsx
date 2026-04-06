@@ -8,7 +8,7 @@ export default function Footer() {
           
           <div className="col-span-1 md:col-span-1">
             <Link href="/" className="font-serif text-xl font-black tracking-tight mb-4 block">
-              TORONTO<span className="text-[var(--color-brand-accent)]">ROBOTICS</span>
+              TORONTO<span className="text-[var(--color-brand-accent)]">ROBOTS</span>
             </Link>
             <p className="text-sm text-[var(--color-brand-muted)] leading-relaxed mt-4 max-w-xs">
               A premium product review magazine for robotics in Toronto. Independent, rigorous, and beautifully presented.
@@ -44,7 +44,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-[var(--color-brand-border)] mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[var(--color-brand-muted)]">
-          <p>© {new Date().getFullYear()} Toronto Robotics. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Toronto Robots. All rights reserved.</p>
           <div className="flex gap-6">
             <Link href="/privacy" className="hover:text-[var(--color-brand-text)] transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-[var(--color-brand-text)] transition-colors">Terms of Service</Link>

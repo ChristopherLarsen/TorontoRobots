@@ -46,7 +46,7 @@ export default async function ArticlePage({ params }: Props) {
                 })}
               </time>
               <span className="w-1 h-1 rounded-full bg-[var(--color-brand-border)]" />
-              <span>By Toronto Robotics Editorial</span>
+              <span>By Toronto Robots Editorial</span>
             </div>
           </div>
 

@@ -16,8 +16,8 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: {
-    default: "Toronto Robotics — Premium Robot Reviews & Buying Guide",
-    template: "%s | Toronto Robotics",
+    default: "Toronto Robots — Premium Robot Reviews & Buying Guide",
+    template: "%s | Toronto Robots",
   },
   description:
     "Your definitive guide to finding the best robots in Toronto. Premium reviews, comparisons, and news.",
@@ -30,15 +30,15 @@ export const metadata: Metadata = {
     "home robots",
     "robot buying guide",
   ],
-  authors: [{ name: "Toronto Robotics" }],
-  creator: "Toronto Robotics",
+  authors: [{ name: "Toronto Robots" }],
+  creator: "Toronto Robots",
   metadataBase: new URL("https://robots.deadratgames.com"),
   alternates: { canonical: "https://robots.deadratgames.com" },
   openGraph: {
-    title: "Toronto Robotics",
+    title: "Toronto Robots",
     description: "Premium robot reviews and buying guide for Toronto.",
     url: "https://robots.deadratgames.com",
-    siteName: "Toronto Robotics",
+    siteName: "Toronto Robots",
     locale: "en_CA",
     type: "website",
   },
