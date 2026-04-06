@@ -53,6 +53,11 @@ const currentState = [
 
 const navLinks = [
   {
+    title: "Software Solutions",
+    href: "/business/solutions",
+    description: "The full software stack, Agent NVIDIA delivery engine, deployment phases, and service pricing.",
+  },
+  {
     title: "Market & Customers",
     href: "/business/market",
     description: "Target verticals, competitive landscape, and the demand thesis we still need to validate.",
