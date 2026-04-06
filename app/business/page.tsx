@@ -240,6 +240,27 @@ export default function BusinessHub() {
           Explore
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Link
+            href="/business/todo"
+            className="group sm:col-span-2 bg-[var(--color-brand-surface)] border-2 border-green-700 hover:border-green-500 p-5 rounded-sm transition-colors"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center justify-center w-6 h-6 rounded-sm bg-green-900/40 text-green-400 text-xs font-bold">
+                  40
+                </span>
+                <h3 className="font-bold text-base text-green-400">
+                  To Do
+                </h3>
+              </div>
+              <span className="text-green-400 group-hover:translate-x-1 transition-transform">
+                &rarr;
+              </span>
+            </div>
+            <p className="text-sm text-[var(--color-brand-muted)] leading-relaxed">
+              Business launch and software development tasks &mdash; 20 items per section, logical order, assigned to AI or Founders.
+            </p>
+          </Link>
           {navLinks.map((link) => (
             <Link
               key={link.href}
