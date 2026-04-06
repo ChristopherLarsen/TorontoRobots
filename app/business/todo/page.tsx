@@ -61,23 +61,91 @@ const softwareTasks = [
 
 /* ------------------------------------------------------------------ */
 /*  Who Badge Component                                                */
+/*  Unified pill language: same shape, same weight, muted neutral     */
+/*  tones that differ only in subtle hue. Metadata, not signage.      */
 /* ------------------------------------------------------------------ */
 
 function WhoBadge({ who }: { who: string }) {
-  const base = "inline-flex items-center px-2 py-0.5 rounded text-xs font-bold tracking-wide";
+  const base =
+    "inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium tracking-normal border";
+
   if (who === "AI") {
-    return <span className={`${base} bg-violet-900/40 text-violet-300`}>AI</span>;
+    return (
+      <span className={`${base} bg-slate-50 text-slate-600 border-slate-200`}>
+        AI
+      </span>
+    );
   }
   if (who === "Founders") {
-    return <span className={`${base} bg-amber-900/40 text-amber-300`}>Founders</span>;
+    return (
+      <span className={`${base} bg-stone-50 text-stone-600 border-stone-200`}>
+        Founders
+      </span>
+    );
   }
   // AI + Founders
   return (
     <span className="inline-flex items-center gap-1">
-      <span className={`${base} bg-violet-900/40 text-violet-300`}>AI</span>
-      <span className="text-xs text-[var(--color-brand-muted)]">+</span>
-      <span className={`${base} bg-amber-900/40 text-amber-300`}>Founders</span>
+      <span className={`${base} bg-slate-50 text-slate-600 border-slate-200`}>
+        AI
+      </span>
+      <span className={`${base} bg-stone-50 text-stone-600 border-stone-200`}>
+        Founders
+      </span>
     </span>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Task Section                                                       */
+/* ------------------------------------------------------------------ */
+
+function TaskSection({
+  title,
+  subtitle,
+  tasks,
+}: {
+  title: string;
+  subtitle: string;
+  tasks: { id: number; task: string; who: string }[];
+}) {
+  return (
+    <section className="mb-16">
+      {/* Section header — dominates */}
+      <div className="flex items-baseline justify-between mb-5 pb-3 border-b border-[var(--color-brand-border)]">
+        <div>
+          <h2 className="font-serif text-3xl font-semibold text-[var(--color-brand-text)] tracking-tight">
+            {title}
+          </h2>
+          <p className="text-sm text-[var(--color-brand-muted)] mt-1.5">
+            {subtitle}
+          </p>
+        </div>
+        <span className="text-xs font-medium uppercase tracking-widest text-[var(--color-brand-muted)] tabular-nums">
+          {tasks.length} items
+        </span>
+      </div>
+
+      {/* Task list — no cards, no heavy borders, just subtle rows */}
+      <ul className="divide-y divide-[var(--color-brand-border)]">
+        {tasks.map((item) => (
+          <li
+            key={item.id}
+            className="group flex items-start gap-5 py-4 px-1 -mx-1 rounded-md hover:bg-black/[0.02] transition-colors"
+          >
+            <span className="flex-shrink-0 w-6 text-right text-sm font-medium text-[var(--color-brand-muted)] tabular-nums mt-0.5 group-hover:text-[var(--color-brand-accent)] transition-colors">
+              {item.id}
+            </span>
+            <p className="flex-1 text-[15px] text-[var(--color-brand-text)] leading-relaxed">
+              {item.task}
+            </p>
+            <div className="flex-shrink-0 mt-0.5">
+              <WhoBadge who={item.who} />
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
@@ -100,134 +168,71 @@ export default function TodoPage() {
   if (!authed) return null;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
+    <div className="max-w-3xl mx-auto px-6 py-16">
+      {/* Back link */}
       <Link
         href="/business"
-        className="text-sm text-[var(--color-brand-muted)] hover:text-[var(--color-brand-accent)] transition-colors inline-flex items-center gap-1 mb-6"
+        className="text-sm text-[var(--color-brand-muted)] hover:text-[var(--color-brand-accent)] transition-colors inline-flex items-center gap-1 mb-10"
       >
         &larr; Back to Our Business
       </Link>
 
-      <h1 className="text-4xl font-black tracking-tight mb-2">To Do</h1>
-      <p className="text-[var(--color-brand-muted)] text-lg mb-10">
-        20 items max per section. Logical order. Ship it.
-      </p>
+      {/* Page header */}
+      <header className="mb-16">
+        <p className="text-xs font-medium uppercase tracking-[0.2em] text-[var(--color-brand-accent)] mb-3">
+          Roadmap
+        </p>
+        <h1 className="font-serif text-5xl font-semibold tracking-tight text-[var(--color-brand-text)] mb-4">
+          To Do
+        </h1>
+        <p className="text-lg text-[var(--color-brand-muted)] leading-relaxed max-w-xl">
+          Twenty items max per section. Logical order. Ship it.
+        </p>
+      </header>
 
-      {/* ============================================================= */}
-      {/*  Business Launch — Forest Green Border                         */}
-      {/* ============================================================= */}
-      <section className="mb-14">
-        <div className="border-2 border-green-700 rounded-sm overflow-hidden">
-          {/* Section Header */}
-          <div className="bg-green-900/20 px-6 py-4 border-b border-green-700">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-xl font-bold text-green-400">
-                  Business Launch
-                </h2>
-                <p className="text-xs text-green-400/60 mt-1">
-                  Legal, deal, customers, revenue &mdash; in order of dependency
-                </p>
-              </div>
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-green-900/40 text-green-400 text-sm font-bold">
-                {businessTasks.length}
-              </span>
-            </div>
-          </div>
+      <TaskSection
+        title="Business Launch"
+        subtitle="Legal, deal, customers, revenue — in order of dependency"
+        tasks={businessTasks}
+      />
 
-          {/* Task List */}
-          <div className="divide-y divide-green-700/30">
-            {businessTasks.map((item) => (
-              <div
-                key={item.id}
-                className="flex items-start gap-4 px-6 py-3 hover:bg-green-900/10 transition-colors"
-              >
-                <span className="flex-shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-sm bg-green-900/30 text-green-400 text-xs font-bold mt-0.5">
-                  {item.id}
-                </span>
-                <p className="flex-1 text-sm text-[var(--color-brand-text)] leading-relaxed">
-                  {item.task}
-                </p>
-                <div className="flex-shrink-0 mt-0.5">
-                  <WhoBadge who={item.who} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================================= */}
-      {/*  Software Development — Default Accent                         */}
-      {/* ============================================================= */}
-      <section className="mb-14">
-        <div className="border border-[var(--color-brand-accent)]/30 rounded-sm overflow-hidden">
-          {/* Section Header */}
-          <div className="bg-[var(--color-brand-accent)]/5 px-6 py-4 border-b border-[var(--color-brand-accent)]/30">
-            <div className="flex items-center justify-between">
-              <div>
-                <h2 className="text-xl font-bold text-[var(--color-brand-accent)]">
-                  Software Development
-                </h2>
-                <p className="text-xs text-[var(--color-brand-muted)] mt-1">
-                  NVIDIA stack, simulation, AI policies, operator dashboard
-                </p>
-              </div>
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-sm bg-[var(--color-brand-accent)]/10 text-[var(--color-brand-accent)] text-sm font-bold">
-                {softwareTasks.length}
-              </span>
-            </div>
-          </div>
-
-          {/* Task List */}
-          <div className="divide-y divide-[var(--color-brand-border)]">
-            {softwareTasks.map((item) => (
-              <div
-                key={item.id}
-                className="flex items-start gap-4 px-6 py-3 hover:bg-[var(--color-brand-accent)]/5 transition-colors"
-              >
-                <span className="flex-shrink-0 inline-flex items-center justify-center w-7 h-7 rounded-sm bg-[var(--color-brand-accent)]/10 text-[var(--color-brand-accent)] text-xs font-bold mt-0.5">
-                  {item.id}
-                </span>
-                <p className="flex-1 text-sm text-[var(--color-brand-text)] leading-relaxed">
-                  {item.task}
-                </p>
-                <div className="flex-shrink-0 mt-0.5">
-                  <WhoBadge who={item.who} />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TaskSection
+        title="Software Development"
+        subtitle="NVIDIA stack, simulation, AI policies, operator dashboard"
+        tasks={softwareTasks}
+      />
 
       {/* Legend */}
-      <section className="mb-10">
-        <div className="bg-[var(--color-brand-surface)] border border-[var(--color-brand-border)] rounded-sm px-6 py-4">
-          <h3 className="text-xs font-bold uppercase tracking-widest text-[var(--color-brand-muted)] mb-3">
-            Legend
-          </h3>
-          <div className="flex flex-wrap gap-6">
-            <div className="flex items-center gap-2">
+      <section className="mt-20 pt-8 border-t border-[var(--color-brand-border)]">
+        <h3 className="text-xs font-medium uppercase tracking-[0.2em] text-[var(--color-brand-muted)] mb-5">
+          Legend
+        </h3>
+        <dl className="space-y-3">
+          <div className="flex items-center gap-3">
+            <dt className="w-28 flex-shrink-0">
               <WhoBadge who="AI" />
-              <span className="text-xs text-[var(--color-brand-muted)]">
-                AI agent handles autonomously
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <WhoBadge who="Founders" />
-              <span className="text-xs text-[var(--color-brand-muted)]">
-                Requires founder action (calls, signatures, meetings)
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <WhoBadge who="AI + Founders" />
-              <span className="text-xs text-[var(--color-brand-muted)]">
-                AI drafts, founders review and execute
-              </span>
-            </div>
+            </dt>
+            <dd className="text-sm text-[var(--color-brand-muted)]">
+              AI agent handles autonomously
+            </dd>
           </div>
-        </div>
+          <div className="flex items-center gap-3">
+            <dt className="w-28 flex-shrink-0">
+              <WhoBadge who="Founders" />
+            </dt>
+            <dd className="text-sm text-[var(--color-brand-muted)]">
+              Requires founder action (calls, signatures, meetings)
+            </dd>
+          </div>
+          <div className="flex items-center gap-3">
+            <dt className="w-28 flex-shrink-0 flex">
+              <WhoBadge who="AI + Founders" />
+            </dt>
+            <dd className="text-sm text-[var(--color-brand-muted)] pl-12">
+              AI drafts, founders review and execute
+            </dd>
+          </div>
+        </dl>
       </section>
     </div>
   );
