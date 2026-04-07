@@ -16,7 +16,7 @@ export default function NavBar() {
           {/* Logo & Tagline */}
           <div className="flex-shrink-0 flex flex-col justify-center">
             <Link href="/" className="font-serif text-2xl font-black tracking-tight text-[var(--color-brand-text)] hover:opacity-80 transition-opacity leading-none">
-              TORONTO<span className="text-[var(--color-brand-accent)] ml-1">ROBOTICS</span>
+              TORONTO<span className="text-[var(--color-brand-accent)] ml-1">ROBOTS</span>
             </Link>
             <span className="text-[9px] font-bold tracking-widest text-[var(--color-brand-muted)] mt-1">
               INTELLIGENT HUMANOID ROBOTS
