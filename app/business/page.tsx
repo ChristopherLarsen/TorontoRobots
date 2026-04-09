@@ -249,6 +249,22 @@ export default function BusinessHub() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Link
+            href="/business/mvp-dog-demo"
+            className="group sm:col-span-2 bg-[var(--color-brand-surface)] border-2 border-[var(--color-brand-accent)] hover:border-[var(--color-brand-accent)] p-5 rounded-sm transition-colors"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-bold text-base text-[var(--color-brand-accent)]">
+                MVP Dog Demo &mdash; Supermarket Can Restocking
+              </h3>
+              <span className="text-[var(--color-brand-accent)] group-hover:translate-x-1 transition-transform">
+                &rarr;
+              </span>
+            </div>
+            <p className="text-sm text-[var(--color-brand-muted)] leading-relaxed">
+              Go2 EDU + D1 arm PoC to unlock a 10-unit G-1 research agreement with Loblaws or Costco. $17.5K cap, 8 weeks, feasibility: yes.
+            </p>
+          </Link>
+          <Link
             href="/business/todo"
             className="group sm:col-span-2 bg-[var(--color-brand-surface)] border-2 border-green-700 hover:border-green-500 p-5 rounded-sm transition-colors"
           >
