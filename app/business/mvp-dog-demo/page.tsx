@@ -193,13 +193,60 @@ export default function MvpDogDemoPage() {
         </div>
       </section>
 
+      <section className="mb-8">
+        <h2 className="text-xl font-bold text-[var(--color-brand-accent)] mb-2">Option 3 — Rent a G-1 EDU U3 for 1 Month (Code-First, Drop-In)</h2>
+        <div className="rounded-lg border-2 border-[var(--color-brand-accent)] bg-[var(--color-brand-surface)] p-5 space-y-3">
+          <p>
+            <strong>The play:</strong> Rent a Unitree G-1 EDU Ultimate A (U3 revision) for one month from a Canadian rental
+            provider (RobotShop Canada, FUTUROBOTS, or SpeedyDrone Toronto). Develop the full software stack in sim and on the
+            owned DGX Spark pair <em>before</em> the robot arrives. When the rental lands, drop the prepared code onto the
+            physical G-1, run hardware integration + dress rehearsals in the same week, and book the customer demo meeting
+            immediately after.
+          </p>
+          <p>
+            <strong>Why this wins:</strong> The buyer-facing artifact is the <em>actual product</em> — a G-1 humanoid, not a
+            Go2 quadruped proxy. This collapses the narrative distance between the demo and the research agreement ask
+            (10 G-1 units). A G-1 in the room makes the pitch a formality.
+          </p>
+          <p>
+            <strong>Hard requirement on the RFQ:</strong> G-1 EDU Ultimate, A configuration, <strong>U3 revision</strong>, with
+            dexterous hands, 3D LiDAR, and Jetson Orin NX. No substitutions. Underspec'd rental units are worse than no demo.
+          </p>
+          <p>
+            <strong>Sequencing (code-first, drop-in):</strong>
+          </p>
+          <ul className="list-disc pl-6 space-y-1">
+            <li><strong>Weeks 1–4:</strong> Full stack developed in Isaac Sim + Isaac Lab on owned GX10/DGX Spark pair. BC + Diffusion Policy trained on sim + any existing G-1 teleop data. Dress-rehearse end-to-end in sim.</li>
+            <li><strong>Week 5:</strong> Rental arrives. Hardware integration, sim-to-real tuning, safety checkout, on-device inference validation.</li>
+            <li><strong>Week 6:</strong> Dress rehearsals on real hardware. Pre-recorded backup video captured. Failure-mode drills.</li>
+            <li><strong>Week 7:</strong> Customer demo meeting. Loblaws or Costco decision-maker in the room with a working G-1.</li>
+            <li><strong>Week 8:</strong> Rental returned. Debrief, research agreement follow-up, Unitree negotiation leverage captured.</li>
+          </ul>
+          <p>
+            <strong>Rental providers to quote (this week):</strong> RobotShop Canada (G-1 EDU U2 Rental w/ On-Site Service),
+            FUTUROBOTS (1–3 month terms, delivery + setup + training + maintenance + support included, full-coverage insurance
+            option), SpeedyDrone Canada (991B Bay St, Toronto — local, worth a call to clarify their Unitree relationship).
+          </p>
+          <p>
+            <strong>Cost:</strong> Rental quotes pending. Expected to exceed the original $15K–$17.5K MVP Dog BOM cap. Given
+            burn is a non-issue and the strategic value of demoing the actual product directly to the buyer is enormous,
+            the cap is lifted for Option 3.
+          </p>
+          <p>
+            <strong>Risk to manage:</strong> Sim-to-real gap on a platform we don't own pre-rental. Mitigation: lean heavily on
+            published G-1 policies, existing GR00T checkpoints where applicable, and keep the demo scope tight (single task,
+            teleop-assisted autonomy acceptable, backup video mandatory — same discipline as the Go2 plan).
+          </p>
+        </div>
+      </section>
+
       <section className="mb-8 text-sm text-[var(--color-brand-muted)] border-t border-[var(--color-brand-border)] pt-4">
         <p>
-          <strong>Footnote — why not a G-1 for the demo itself?</strong> A Unitree G-1 with dexterous hands lands at roughly
-          $56,000–$69,000 USD, or 3.2×–3.9× the Go2 BOM above — $38K–$51K over the current cap. More importantly, shipping a
-          manipulation-heavy G-1 workload in Year 1 runs into battery and motor-drain constraints that a quadruped platform
-          avoids. The Go2 restocker establishes the PoC; the G-1 research agreement funds the platform where humanoid form
-          factor actually pays off (shelf audit, safety patrol).
+          <strong>Footnote — Option 3 supersedes the "why not G-1" reasoning above.</strong> The original concern was
+          $56K–$69K capex for a G-1 purchase plus battery/motor-drain on manipulation workloads in Year 1. Renting the G-1
+          EDU U3 for a single month converts that capex into a short-duration opex line, eliminates long-term wear exposure,
+          and puts the <em>real product</em> in the buyer's hands. If a Canadian rental provider can ship a U3 config on
+          our timeline, Option 3 is the preferred path.
         </p>
       </section>
     </div>
